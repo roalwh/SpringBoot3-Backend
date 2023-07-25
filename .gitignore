@@ -725,3 +725,5 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/java,react,intellij,eclipse,maven,gradle,sass,reactnative,vue,vuejs,windows,linux,macos,emacs,visualstudiocode,webstorm!/.gitignore
 
 !/java-spring/.idea/
+
+/.vscode/*
