@@ -3,10 +3,7 @@ package pe.roalwh.backend.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pe.roalwh.backend.domain.Article;
 import pe.roalwh.backend.dto.AddArticleRequest;
 import pe.roalwh.backend.dto.ArticleResponse;
@@ -19,6 +16,7 @@ import java.util.List;
 public class BlogApiController {
     private final BlogService blogService;
 
+    //글 저장
     @PostMapping("/api/articles")
     public ResponseEntity<Article>  addArticle(@RequestBody AddArticleRequest request){
         Article savedArticle = blogService.save(request);
@@ -26,7 +24,7 @@ public class BlogApiController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedArticle);
     }
-
+    //글 리스트 가져오기
     @GetMapping("/api/articles")
     public ResponseEntity<List<ArticleResponse>> findAllArticles() {
         List<ArticleResponse> articles = blogService.findAll()
@@ -35,4 +33,12 @@ public class BlogApiController {
                 .toList();
         return ResponseEntity.ok().body(articles);
     }
+
+//    //글 삭제하기
+//    @DeleteMapping("/api/articles")
+//    public ResponseEntity<Void> deleteArticle(@PathVariable Long id){
+//        blogService.delete(id);
+//
+//        return ResponseEntity.ok().build();
+//    }
 }

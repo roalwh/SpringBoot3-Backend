@@ -13,7 +13,7 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
     private Long id;
-//    컬럼명,notnull 지정
+//    컬럼명, notnull 지정
     @Column(name = "title", nullable = false)
     private String title;
 
