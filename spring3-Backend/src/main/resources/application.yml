@@ -3,30 +3,35 @@
 
 spring:
   datasource:
-      url: jdbc:mariadb://roalwh.iptime.org:21356/mydb        # mariadb
-      driver-class-name: org.mariadb.jdbc.Driver
-      username: ex
-      password: 1234
+    url: jdbc:mariadb://roalwh.iptime.org:21356/mydb        # mariadb
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: ex
+    password: 1234
       
   jpa:
-      show-sql: true
-      defer-datasource-initialization: true # data.sql 사용을 위해서 필수적으로 등록
-      properties:
-          hibernate:
-              format_sql: true  # sql문 pretty하게 보여줌
-              use_sql_comments: true
-      generate-ddl: true   # true, false
-      hibernate:
-          ddl-auto: update    # create(처음생성시,테스트), create-drop, update(db가 확정되었을 때,수정단계일때), validate, none(최종)
-      devtools:
-          livereload:
-              enabled: true
+    show-sql: true
+#      h2가 아닌 mariadb로 생성해서 필요없음
+#      defer-datasource-initialization: true # data.sql 사용을 위해서 필수적으로 등록
+
+    properties:
+        hibernate:
+          format_sql: true  # sql문 pretty하게 보여줌
+          use_sql_comments: true
+
+    generate-ddl: true   # true, false
+    hibernate:
+        ddl-auto: update    # create(처음생성시,테스트), create-drop, update(db가 확정되었을 때,수정단계일때), validate, none(최종)
+
+    devtools:
+        livereload:
+          enabled: true
+
   sql:
-      init:
-          mode: never
-          # always: embeded db가 아닌 외부 db 사용시 spring boot를 실행할때 마다 data.sql schema.sql import.sql을 항상 실행
-          # never: data.sql schema.sql import.sql을 실행하지 않음
-          encoding: utf-8
-      devtools:
-          livereload:
-              enabled: true
+    init:
+        mode: never
+        # always: embeded db가 아닌 외부 db 사용시 spring boot를 실행할때 마다 data.sql schema.sql import.sql을 항상 실행
+        # never: data.sql schema.sql import.sql을 실행하지 않음
+        encoding: utf-8
+    devtools:
+        livereload:
+          enabled: true

@@ -4,9 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pe.roalwh.backend.domain.Article;
+
 import pe.roalwh.backend.dto.AddArticleRequest;
 import pe.roalwh.backend.dto.ArticleResponse;
+import pe.roalwh.backend.dto.UpdateArticleRequest;
+import pe.roalwh.backend.model.Article;
 import pe.roalwh.backend.service.BlogService;
 
 import java.util.List;
@@ -34,11 +36,17 @@ public class BlogApiController {
         return ResponseEntity.ok().body(articles);
     }
 
-//    //글 삭제하기
-//    @DeleteMapping("/api/articles")
-//    public ResponseEntity<Void> deleteArticle(@PathVariable Long id){
-//        blogService.delete(id);
-//
-//        return ResponseEntity.ok().build();
-//    }
+    //글 삭제하기
+    @DeleteMapping("/api/articles/{id}")
+    public ResponseEntity<String> deleteArticle(@PathVariable Long id){
+        blogService.delete(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/api/articles/{id}")
+    public ResponseEntity<Article> updateArticle(@PathVariable Long id, @RequestBody UpdateArticleRequest request){
+        Article updateArticle = blogService.update(id,request);
+
+        return ResponseEntity.ok().body(updateArticle);
+    }
 }
