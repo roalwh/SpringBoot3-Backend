@@ -1,5 +1,10 @@
 package pe.roalwh.backend.model;
 
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +25,13 @@ public class Article {
     @Column(name = "content", nullable = false)
     private String content;
 
+    @CreatedDate
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
 //    생성
     @Builder

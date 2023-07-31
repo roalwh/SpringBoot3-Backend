@@ -6,4 +6,6 @@ import pe.roalwh.backend.model.Article;
 
 public interface BlogRepository extends JpaRepository<Article,Long> {
 
-}
+    
+  }
+
